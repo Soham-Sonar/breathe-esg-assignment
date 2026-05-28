@@ -1,0 +1,21 @@
+Plant ,  MATNR  ,MENGE,  MEINS,BUDAT,Cost_Center,BELNR,Department,Approved_By,Internal_Code,Remarks
+PL01,"  Diesel  ",1000,L,20240101,CC100,DOC001,Finance,John,A123,Normal entry
+PL02,PETROL," 1,200.50 ",Ltr,15/01/2024,CC101,DOC002,Ops,Sarah,B456,Comma in qty
+PL03," Natural Gas  ",300,M3,01-JAN-2024,CC102,DOC003,Plant,Ali,C789,Spaces in material
+PL04,"HSD Fuel (SAP)",999999,L,2024-01-04,CC103,DOC004,Finance,John,D111,Should be flagged
+PL05,unknow_fuel,100,L,2024-01-05,CC104,DOC005,Ops,Raj,E222,Unknown material - should fail
+PL01,diesel,1000,L,20240101,CC100,DOC001,Finance,John,A123,Exact duplicate of row 1
+ ,Diesel,500,Lts,20240106,CC105,DOC006,Admin,Priya,F333,Missing plant code
+PL02,GASOLINE,"1.500,75",Liters,Jan 15 2024,CC101,DOC007,Ops,Sarah,G444,European number format
+PL01,,200,L,20240108,CC100,DOC008,Finance,John,H555,Missing material - should fail
+PL03,Diesel,abc,L,20240109,CC102,DOC009,Plant,Ali,I666,Non-numeric qty - should fail
+PL04,CNG,750,KG,20240110,CC103,DOC010,Finance,John,J777,CNG alias + kg unit
+PL05,DIESEL FUEL,500.00,GAL,20240111,CC104,DOC011,Ops,Raj,K888,Gallon conversion
+PL01,Motor Spirit,300,liter,20240112,CC100,,Admin,Priya,L999,Missing doc no - fallback id
+PL02,Petrol,-50,L,20240113,CC101,DOC013,Ops,Sarah,M000,Negative qty - should fail
+WERK01,High Speed Diesel,"2,500",Ltrs,20240114,CC102,DOC014,Plant,Ali,N111,WERK01 plant lookup
+PL06,Diesel,100,L,20240115,CC103,DOC015,Finance,John,O222,Unknown plant code PL06
+PL01,diesel,1000,L,20240101,CC100,DOC001,Finance,John,A123,Duplicate again (3rd time)
+PL03,LPG,900,SCM,16-02-2024,CC102,DOC016,Plant,Ali,P333,LPG alias + SCM unit
+PL04,Diesel,200,L,NULL,CC103,DOC017,Finance,John,Q444,NULL date - should fail
+PL05,Diesel,100,Gallons,2024-01-18,CC104,DOC018,Ops,Raj,R555,

@@ -1,0 +1,9 @@
+Trip_ID,Employee_Name,Travel_Type,Origin_Code,Destination_Code,Distance_km,Class,Departure_Date,Return_Date
+TR001,Rahul Sharma,Flight,BOM,DEL,1150,Economy,2024-01-10,2024-01-12
+TR002,Priya Mehta,Flight,BLR,MAA,350,Business,2024-01-15,2024-01-16
+TR003,Amit Verma,Ground,DEL,GGN,45,Ground,2024-01-20,2024-01-20
+TR004,Neha Singh,Flight,BOM,DXB,1920,Economy,2024-01-22,2024-01-25
+TR005,Arjun Patel,Flight,DEL,SIN,4150,Business,2024-01-25,2024-01-30
+TR006,Karan Rao,Ground,BLR,MYS,145,Ground,2024-01-28,2024-01-28
+TR007,Sneha Iyer,Flight,MAA,BOM,,Economy,2024-02-01,2024-02-03
+TR008,Vikram Joshi,Flight,DEL,BLR,1740,Economy,2024-02-05,2024-02-07
