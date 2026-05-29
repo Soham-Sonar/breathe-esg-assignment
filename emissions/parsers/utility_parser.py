@@ -32,8 +32,43 @@ ENERGY_PATTERNS = [
 # --------------------------------
 
 def parse_date(value):
+
+    value = str(value).strip()
+
+    formats = [
+        "%d/%m/%Y",
+        "%d/%m/%y",
+        "%Y-%m-%d",
+        "%d-%b-%Y",
+        "%d.%m.%Y",
+        "%b %d, %Y",
+    ]
+
+    for fmt in formats:
+        try:
+            dt = datetime.strptime(value, fmt)
+
+            # Fix 2-digit years becoming year 0018/0008
+            if dt.year < 100:
+                dt = dt.replace(year=2000 + dt.year)
+
+            return dt.date()
+
+        except Exception:
+            continue
+
     try:
-        return pd.to_datetime(value,errors="raise",dayfirst=True).date()
+        dt = pd.to_datetime(
+            value,
+            errors="raise",
+            dayfirst=True
+        )
+
+        if dt.year < 100:
+            dt = dt.replace(year=2000 + dt.year)
+
+        return dt.date()
+
     except Exception:
         return None
 
@@ -258,7 +293,7 @@ def parse_single_bill(text, upload, company, idx):
         period_start=start,
         period_end=end,
         review_status=status,
-        source_row_id=f"pdf_{upload.id}_{idx}",
+        source_row_id=f"UTILITY-{idx + 1:04d}",
         flag_reason=flag_reason,
     )
 

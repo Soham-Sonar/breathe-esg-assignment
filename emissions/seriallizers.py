@@ -34,3 +34,23 @@ class FailedRowSerializer(serializers.ModelSerializer):
     class Meta:
         model = FailedRow
         fields = '__all__'
+
+
+from .models import AuditLog
+class AuditLogSerializer(serializers.ModelSerializer):
+
+    record_number = serializers.CharField(
+        source='emission_record.source_row_id',
+        read_only=True
+    )
+
+    class Meta:
+        model = AuditLog
+        fields = [
+            'id',
+            'action',
+            'performed_by',
+            'notes',
+            'created_at',
+            'record_number',
+        ]

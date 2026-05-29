@@ -9,10 +9,13 @@ from .models import (
     FailedRow,
     AuditLog,
 )
+
+from .models import AuditLog
+
 from .parsers.sap_parser import parse_sap
 from .parsers.utility_parser import parse_utility
 from .parsers.travel_parser import parse_travel
-from .seriallizers import EmissionRecordSerializer, EmissionRecord,DataUploadSerializer, FailedRowSerializer, CompanySerializer
+from .seriallizers import EmissionRecordSerializer, EmissionRecord,DataUploadSerializer, FailedRowSerializer, CompanySerializer,AuditLogSerializer
 from rest_framework.views import APIView
 
 from rest_framework.response import Response
@@ -377,3 +380,17 @@ class BulkReviewAPIView(APIView):
         return Response({
             'message': f'{updated} records updated'
         })
+    
+
+
+
+class AuditLogAPIView(APIView):
+    def get(self, request):
+        company_id = request.GET.get('company_id')
+        logs = AuditLog.objects.filter(
+            emission_record__company_id=company_id
+        ).order_by('-created_at')[:200]
+        serializer = AuditLogSerializer(logs, many=True)
+        return Response(serializer.data)
+    
+    

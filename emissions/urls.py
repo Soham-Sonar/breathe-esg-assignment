@@ -6,7 +6,8 @@ from .views import (
     UploadHistoryAPIView,
     FailedRowsAPIView,
     CompanyAPIView,
-    BulkReviewAPIView
+    BulkReviewAPIView,
+    AuditLogAPIView
 )
 
 urlpatterns = [
@@ -36,4 +37,7 @@ path(
     'records/bulk-review/',
     BulkReviewAPIView.as_view()
 ),
+
+
+path('audit-logs/', AuditLogAPIView.as_view()),
 ]
